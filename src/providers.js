@@ -38,18 +38,19 @@ function mockProvider(name, bias) {
 // Real provider: Travelpayouts / Aviasales Data API (cached prices, free with a Travelpayouts token).
 // Docs: https://support.travelpayouts.com/hc/en-us/articles/203956163-Aviasales-Data-API
 // NOT tested against the live API in this build (no token available).
+const CUR = (process.env.TP_CURRENCY || 'sar').toLowerCase(); // Data API default is RUB, so currency must be sent
 const travelpayouts = {
   name: 'aviasales',
   async search({ from, to, date }) {
     const u = new URL('https://api.travelpayouts.com/aviasales/v3/prices_for_dates');
-    Object.entries({ origin: from, destination: to, departure_at: date, currency: 'sar', one_way: 'true', sorting: 'price', limit: 30 }).forEach(([k, v]) => u.searchParams.set(k, v));
+    Object.entries({ origin: from, destination: to, departure_at: date, currency: CUR, one_way: 'true', sorting: 'price', limit: 30, ...(process.env.TP_MARKET ? { market: process.env.TP_MARKET } : {}) }).forEach(([k, v]) => u.searchParams.set(k, v));
     const res = await fetch(u, { headers: { 'X-Access-Token': process.env.TP_TOKEN } });
     if (!res.ok) throw new Error('travelpayouts ' + res.status);
     const j = await res.json();
     return (j.data || []).map(t => {
       const dt = String(t.departure_at || '');
       return { id: `tp-${t.airline}${t.flight_number || ''}-${dt}`, provider: 'aviasales', airline: t.airline, airlineCode: t.airline, from, to, date,
-        departTime: dt.slice(11, 16), durationMin: t.duration_to || t.duration || 0, stops: t.transfers || 0, price: t.price, currency: 'SAR',
+        departTime: dt.slice(11, 16), durationMin: t.duration_to || t.duration || 0, stops: t.transfers || 0, price: t.price, currency: String(j.currency || CUR).toUpperCase(),
         link: t.link ? 'https://www.aviasales.com' + t.link : null };
     });
   }

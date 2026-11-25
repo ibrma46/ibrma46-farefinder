@@ -16,9 +16,13 @@ function validate({ from, to, date, pax }) {
 // Partner link with our affiliate marker. Use the link format your Travelpayouts dashboard gives you.
 function partnerLink(o, q) {
   const marker = process.env.TP_MARKER || 'DEMO_MARKER';
-  if (o.link) return o.link + (o.link.includes('?') ? '&' : '?') + 'marker=' + encodeURIComponent(marker);
+  const cur = (process.env.TP_CURRENCY || 'sar').toLowerCase();
+  // Links from the Data API already carry expected_price_currency (the currency we requested).
+  // Aviasales documents no currency URL parameter for search links; currency=sar is best-effort (unverified).
+  const add = u => { u.searchParams.set('marker', marker); if (!u.searchParams.has('currency')) u.searchParams.set('currency', cur); return u.toString(); };
+  if (o.link) return add(new URL(o.link));
   const [, m, d] = q.date.split('-');
-  return `https://www.aviasales.com/search/${q.from}${d}${m}${q.to}${q.pax || 1}?marker=${encodeURIComponent(marker)}`;
+  return add(new URL(`https://www.aviasales.com/search/${q.from}${d}${m}${q.to}${q.pax || 1}`));
 }
 async function search(q) {
   const pax = validate(q);
