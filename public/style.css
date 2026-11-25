@@ -10,3 +10,6 @@ button{background:#0b5fff;color:#fff;border:0;border-radius:8px;padding:10px 16p
 .day.min{outline:2px solid #12a150}.note{color:#777;font-size:12px}#msg{margin-top:10px}#msg.err{color:#c00}dialog label{margin:8px 0}
 
 .btn{background:#0b5fff;color:#fff;border-radius:8px;padding:10px 16px;text-decoration:none;display:inline-block}
+
+header{background:#fff;color:#1b2430;border-bottom:1px solid #e3e8ef}header img{height:56px;max-width:90%}header p{margin:4px 0 0;color:#6b7a8c;font-size:14px}
+header{position:relative}#lang{position:absolute;top:12px;inset-inline-end:12px;background:#eef2f7;color:#0b2a4a;padding:6px 12px;border:1px solid #cdd6e2}

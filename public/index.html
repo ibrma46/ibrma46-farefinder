@@ -1,10 +1,13 @@
 <!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>فير فايندر - أرخص حجز طيران</title><link rel="stylesheet" href="style.css"></head><body>
-<header><h1>✈ فير فايندر</h1><p>نقارن عدة مزودين ونعرض لك الأرخص</p></header>
+<title>REMCO</title><link rel="stylesheet" href="style.css"></head><body>
+<header><button id="lang" type="button" aria-label="Language">EN</button><img src="logo.png" alt="REMCO"><p data-i="tagline"></p></header>
 <main>
-<form id="f"><label>من<select id="from"></select></label><label>إلى<select id="to"></select></label>
-<label>التاريخ<input type="date" id="date" required></label><label>المسافرون<input type="number" id="pax" min="1" max="9" value="1"></label>
-<button>ابحث</button></form>
+<form id="f"><label><span data-i="from"></span><input id="from" list="dl-from" autocomplete="off" required></label><datalist id="dl-from"></datalist>
+<label><span data-i="to"></span><input id="to" list="dl-to" autocomplete="off" required></label><datalist id="dl-to"></datalist>
+<label><span data-i="date"></span><input type="date" id="date" required></label>
+<label><span data-i="pax"></span><input type="number" id="pax" min="1" max="9" value="1"></label>
+<button data-i="search"></button></form>
+<div class="note"><span data-i="country"></span></div>
 <div id="msg" role="status"></div><div id="cal"></div><div id="res"></div>
-<p class="note" id="disc">فير فايندر موقع مقارنة أسعار فقط، لسنا وكالة سفر ولا نبيع تذاكر ولا نستلم مدفوعات. الحجز يتم لدى الشريك المعروض. قد نحصل على عمولة من الشريك دون أي زيادة على سعرك. الأسعار استرشادية وقد تختلف عند الحجز.</p>
+<p class="note" id="disc" data-i="disc"></p>
 </main><script src="app.js"></script></body></html>
