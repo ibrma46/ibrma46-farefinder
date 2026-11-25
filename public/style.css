@@ -1,0 +1,12 @@
+body{font-family:system-ui,Tahoma,sans-serif;margin:0;background:#f3f6fb;color:#1b2430}
+header{background:#0b5fff;color:#fff;padding:20px;text-align:center}header h1{margin:0}
+main{max-width:860px;margin:auto;padding:16px}
+#f{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;background:#fff;padding:14px;border-radius:12px;box-shadow:0 1px 4px #0002}
+label{display:flex;flex-direction:column;font-size:14px;gap:4px}select,input{padding:8px;border:1px solid #bbc;border-radius:8px}
+button{background:#0b5fff;color:#fff;border:0;border-radius:8px;padding:10px 16px;cursor:pointer;align-self:end}
+.card{background:#fff;margin-top:10px;padding:12px;border-radius:12px;display:flex;justify-content:space-between;align-items:center;box-shadow:0 1px 3px #0002}
+.card.best{border:2px solid #12a150}.badge{background:#12a150;color:#fff;border-radius:6px;padding:2px 8px;font-size:12px}
+.price{font-size:22px;font-weight:700}.cal{display:flex;gap:6px;overflow:auto;margin-top:10px}.day{background:#fff;padding:8px;border-radius:8px;text-align:center;min-width:90px;cursor:pointer}
+.day.min{outline:2px solid #12a150}.note{color:#777;font-size:12px}#msg{margin-top:10px}#msg.err{color:#c00}dialog label{margin:8px 0}
+
+.btn{background:#0b5fff;color:#fff;border-radius:8px;padding:10px 16px;text-decoration:none;display:inline-block}

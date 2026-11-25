@@ -1,0 +1,1 @@
+{"name":"farefinder","version":"1.0.0","description":"Lowest-price flight search and booking with built-in margin","scripts":{"start":"node src/server.js","test":"node --test test/*.test.js"},"engines":{"node":">=18"}}
