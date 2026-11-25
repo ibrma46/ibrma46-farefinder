@@ -1,0 +1,14 @@
+<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>REMCO</title><link rel="stylesheet" href="style.css"></head><body>
+<header><button id="lang" type="button" aria-label="Language">EN</button><img src="logo.png" alt="REMCO"><p data-i="tagline"></p></header>
+<main>
+<form id="f"><div class="trip"><label class="radio"><input type="radio" name="trip" value="oneway" checked><span data-i="oneway"></span></label><label class="radio"><input type="radio" name="trip" value="round"><span data-i="round"></span></label></div><label><span data-i="from"></span><input id="from" list="dl-from" autocomplete="off" required></label><datalist id="dl-from"></datalist>
+<label><span data-i="to"></span><input id="to" list="dl-to" autocomplete="off" required></label><datalist id="dl-to"></datalist>
+<label><span data-i="date"></span><input type="date" id="date" required></label>
+<label id="retwrap" hidden><span data-i="ret"></span><input type="date" id="ret"></label>
+<label><span data-i="pax"></span><input type="number" id="pax" min="1" max="9" value="1"></label>
+<button data-i="search"></button></form>
+<div class="note"><span data-i="country"></span> <a id="wl" href="search.html" hidden data-i="wl"></a></div>
+<div id="msg" role="status"></div><div id="cal"></div><div id="res"></div>
+<p class="note" id="disc" data-i="disc"></p>
+</main><script src="app.js"></script></body></html>
